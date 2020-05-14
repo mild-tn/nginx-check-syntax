@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from redirection.views import RedirectionListAPI
 
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-# router.register(r'core', CoreView, basename='core')
+router.register(r'redirection', RedirectionListAPI, basename='redirection')
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('api/redirection', RedirectionListAPI.as_view())
 ]
