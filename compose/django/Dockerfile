@@ -15,6 +15,7 @@ COPY . $APPLICATION_ROOT
 RUN ls -la $APPLICATION_ROOT/compose/django
 
 RUN python nginx_syntax/manage.py migrate
+RUN python nginx_syntax/manage.py collectstatic
 
-CMD ["python", "nginx_syntax/manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ["uwsgi", "--ini", "./nginx_syntax/uwsgi.ini"]
+# CMD ["python", "nginx_syntax/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["uwsgi", "--ini", "./nginx_syntax/uwsgi.ini"]
