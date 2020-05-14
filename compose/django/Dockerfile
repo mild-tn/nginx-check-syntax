@@ -13,5 +13,8 @@ RUN pip install -r requirement.txt
 
 COPY . $APPLICATION_ROOT
 RUN ls -la $APPLICATION_ROOT/compose/django
+
+RUN python nginx_syntax/manage.py migrate
+
 CMD ["python", "nginx_syntax/manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ["uwsgi", "--ini", "./compose/django/uwsgi.ini"]
+# CMD ["uwsgi", "--ini", "./nginx_syntax/uwsgi.ini"]
