@@ -12,7 +12,6 @@ class RedirectionListAPI(APIView):
         redirection = Redirection.objects.all()
         serializer = RedirectionSerializer(redirection, many=True)
         result = create_nginx_file('mildhub.test', '/', '/test', True, False, True)
-        print('=====2'*10)
         return  Response(serializer.data)
 
     def post(self, request):
